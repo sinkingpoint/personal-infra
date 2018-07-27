@@ -9,3 +9,7 @@ RUN wget -qO - https://packages.chef.io/chef.asc | apt-key add - && \
     apt-get install -y chefdk
 
 RUN mkdir -p /opt/chef/cookbooks
+
+ADD common /opt/chef/cookbooks/common
+
+RUN cd /opt/chef/cookbooks/common && chef-client -z -r common
