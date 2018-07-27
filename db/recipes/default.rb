@@ -1,1 +1,2 @@
-include_recipe 'mariadb::server'
+include_recipe 'mariadb'
+
