@@ -1,6 +1,6 @@
 include ../Makefile
 
-image: base-image
+image: 
 	docker build -t db .
 
 run: image

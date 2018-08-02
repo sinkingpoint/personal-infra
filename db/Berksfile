@@ -1,5 +1,5 @@
 source 'https://supermarket.chef.io'
 
-cookbook 'mariadb', '~> 1.5.4'
+cookbook 'mariadb', git: 'https://github.com/sous-chefs/mariadb'
 
 metadata

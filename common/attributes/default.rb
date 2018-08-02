@@ -2,7 +2,10 @@ default['common']['packages'] = [
     'vim',
     'sudo',
     'zsh',
-    'openssh-server'
+    'openssh-server',
+    'curl',
+    'wget',
+    'git'
 ]
 
 default['common']['users'] = [
