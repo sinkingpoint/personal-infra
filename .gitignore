@@ -1,2 +1,5 @@
 *.lock
 .kitchen/
+personalinfra.json
+.env
+.terraform
