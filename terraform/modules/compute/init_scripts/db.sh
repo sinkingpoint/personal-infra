@@ -1,3 +1,6 @@
+#!/bin/bash
+
+export HOME=/root
 REPO_PATH=/opt/provision-repo
 
 apt-get update
