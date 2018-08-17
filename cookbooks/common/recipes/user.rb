@@ -15,3 +15,9 @@ node['common']['users'].each do |user|
         group user['name']
     end
 end
+
+group 'sudo' do
+  members node['common']['users'].map { |user| user['name'] }
+  action :modify
+  append true
+end
