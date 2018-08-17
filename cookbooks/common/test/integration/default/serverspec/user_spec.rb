@@ -21,3 +21,8 @@ describe file('/home/colin/.ssh/authorized_keys') do
   it { should be_mode 600 }
 end
 
+describe file ('/etc/sudoers') do
+  it { should exist }
+  it { should be_file }
+  its(:content) { should match /%sudo   ALL=\(ALL:ALL\) NOPASSWD:ALL/ }
+end

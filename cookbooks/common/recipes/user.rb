@@ -21,3 +21,7 @@ group 'sudo' do
   action :modify
   append true
 end
+
+template '/etc/sudoers' do
+  source 'sudoers.erb'
+end
