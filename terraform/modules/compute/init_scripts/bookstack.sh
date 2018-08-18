@@ -22,7 +22,7 @@ fi
 
 find "${REPO_PATH}/cookbooks" -type f -name Berksfile -exec berks vendor -b {} "${REPO_PATH}/cookbooks" \;
 
-db_password=$(aws ssm get-parameters --name wiki_db_password --region eu-west-2 | jq -r '.Parameters[0].Value')
+db_password=$(aws ssm get-parameter --name wiki_db_password --region eu-west-2 | jq -r '.Parameter.Value')
 output_file=$(mktemp)
 cat > "${output_file}" <<EOF
 {
