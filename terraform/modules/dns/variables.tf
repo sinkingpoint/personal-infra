@@ -1,4 +1,7 @@
 variable "domain" {}
-variable "records" {
-  default = []
-}
+
+variable "corvus" {}
+
+variable "corvus_in" {}
+
+variable "wiki" {}
