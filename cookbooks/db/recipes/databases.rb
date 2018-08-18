@@ -18,4 +18,9 @@ node['db']['databases'].each do |database|
         privileges [:select, :insert, :update, :delete]
         action :grant
     end
+
+    mariadb_database "#{database['name']}-access" do
+      sql "grant all on *.* to '#{database['name']}'@'%';"
+      action :query
+    end
 end
