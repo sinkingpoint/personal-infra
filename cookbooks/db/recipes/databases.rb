@@ -18,7 +18,7 @@ node['db']['databases'].each do |database|
         name database['name']
         password password
         database_name database['name']
-        privileges [:select, :insert, :update, :delete]
+        privileges [:all]
         ctrl_password node['mariadb']['server_root_password']
         host '%'
         action :grant
