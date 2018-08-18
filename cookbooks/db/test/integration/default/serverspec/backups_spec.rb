@@ -11,6 +11,12 @@ describe file('/opt/db/scripts/backup_db.sh') do
     its(:content) { should match /#!\/bin\/bash/ }
 end
 
+describe file('/opt/db/scripts/restore_db.sh') do
+    it { should exist }
+    it { should be_file }
+    its(:content) { should match /#!\/bin\/bash/ }
+end
+
 describe cron do
   its(:table) { should match  /\/opt\/db\/scripts\/backup_db.sh/ }
 end

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+to_restore=$(mktemp)
+/usr/bin/aws s3 cp --region eu-west-2 s3://sinking-database-backups/latest.bak "${to_restore}"
+/usr/bin/mysql -u root -p<%= @root_password %> < "${to_restore}"
+rm "${to_restore}"
