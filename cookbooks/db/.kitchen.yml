@@ -6,3 +6,6 @@ suites:
   - name: default
     run_list:
       - recipe[db]
+    attributes:
+      mariadb:
+        server_root_password: test

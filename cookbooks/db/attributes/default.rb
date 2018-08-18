@@ -1,5 +1,5 @@
 override['mariadb']['install']['version'] = '10.1'
-override['mariadb']['server_root_password'] = 'changeme'
+default['mariadb']['server_root_password'] = 'changeme'
 override['common']['runlist'] = 'common,db'
 default['db']['listen_ip'] = (node['network']['interfaces']['eth0']['addresses'].select { |a, details| details[:family] == 'inet'}).keys[0]
 default['db']['databases'] = [
