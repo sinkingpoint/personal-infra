@@ -58,7 +58,7 @@ resource "aws_launch_configuration" "bookstack_launch_conf" {
   iam_instance_profile        = "${aws_iam_instance_profile.wiki_profile.name}"
   key_name                    = "personal-infra"
   associate_public_ip_address = true
-  security_groups             = ["${aws_security_group.public_ssh.id}"]
+  security_groups             = ["${aws_security_group.public_ssh.id}", "${aws_security_group.internal_8080.id}"]
 
   lifecycle {
     create_before_destroy = true
@@ -74,4 +74,36 @@ resource "aws_autoscaling_group" "bookstack_autoscaling_group" {
   lifecycle {
     create_before_destroy = true
   }
+
+  depends_on = ["aws_instance.database_master"]
+}
+
+resource "aws_elb" "bookstack_elb" {
+  name            = "bookstack-elb"
+  security_groups = ["${aws_security_group.public_80.id}"]
+  subnets         = ["${var.sinking_subnet_eu_west_2a}"]
+
+  listener {
+    instance_port     = 8080
+    instance_protocol = "http"
+    lb_port           = 80
+    lb_protocol       = "http"
+  }
+
+  health_check {
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = 3
+    target              = "HTTP:8080/login"
+    interval            = 30
+  }
+
+  tags {
+    Name = "bookstack_elb"
+  }
+}
+
+resource "aws_autoscaling_attachment" "bookstack_elb_attachment" {
+  autoscaling_group_name = "${aws_autoscaling_group.bookstack_autoscaling_group.id}"
+  elb                    = "${aws_elb.bookstack_elb.id}"
 }

@@ -70,7 +70,7 @@ resource "aws_iam_instance_profile" "database_profile" {
   role = "${aws_iam_role.database_role.name}"
 }
 
-resource "aws_instance" "database_template" {
+resource "aws_instance" "database_master" {
   ami                         = "${data.aws_ami.debian-stretch.id}"
   instance_type               = "t2.micro"
   availability_zone           = "eu-west-2a"
