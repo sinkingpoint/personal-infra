@@ -20,3 +20,9 @@ fi
 
 find "${REPO_PATH}/cookbooks" -type f -name Berksfile -exec berks vendor -b {} "${REPO_PATH}/cookbooks" \;
 cd "${REPO_PATH}" && chef-client -z -r 'common,db'
+
+if [[ ! -f /opt/db/last_backup.txt ]]; then
+  /opt/db/scripts/restore_db.sh
+  date +%s > /opt/db/last_backup.txt
+fi
+
