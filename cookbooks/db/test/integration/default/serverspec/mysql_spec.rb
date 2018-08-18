@@ -6,7 +6,7 @@ describe service('mysql') do
 end
 
 describe command('mysql --version') do
-    its(:stdout) { should match /10.3.8-MariaDB/ }
+    its(:stdout) { should match /10.3.[0-9]+-MariaDB/ }
 end
 
 describe file('/etc/mysql/my.cnf') do

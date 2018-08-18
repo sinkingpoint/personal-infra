@@ -1,0 +1,8 @@
+#!/bin/bash
+
+to_upload=$(mktemp)
+
+/usr/bin/mysqldump --all-databases -u root -p<%= @root_password %> "${to_upload}"
+/usr/bin/aws s3 cp --region eu-west-2 "${to_upload}" s3://sinking-database-backups/"$(date '+%Y-%m-%d').bak"
+/usr/bin/aws s3 cp --region eu-west-2 "${to_upload}" s3://sinking-database-backups/latest.bak
+rm "${to_upload}"
