@@ -1,7 +1,3 @@
-data "aws_s3_bucket" "database_backups" {
-  bucket = "sinking-database-backups"
-}
-
 resource "aws_iam_policy" "database_policy" {
   policy = <<EOF
 {
