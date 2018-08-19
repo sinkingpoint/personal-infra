@@ -25,7 +25,8 @@ module "dns" {
   source = "modules/dns"
   domain = "sinkingpoint.com"
 
-  corvus    = "${module.compute.db_ip}"
-  corvus_in = "${module.compute.db_internal_ip}"
-  wiki      = "${module.compute.bookstack_cname_target}"
+  corvus     = "${module.compute.db_ip}"
+  corvus_in  = "${module.compute.db_internal_ip}"
+  wiki       = "${module.compute.bookstack_cname_target}"
+  prometheus = "${module.compute.prometheus_cname_target}"
 }

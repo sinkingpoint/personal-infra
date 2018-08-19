@@ -9,3 +9,7 @@ output "db_ip" {
 output "bookstack_cname_target" {
   value = "${aws_elb.bookstack_elb.dns_name}"
 }
+
+output "prometheus_cname_target" {
+  value = "${aws_elb.prometheus_elb.dns_name}"
+}

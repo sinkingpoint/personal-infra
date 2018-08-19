@@ -18,3 +18,10 @@ resource "cloudflare_record" "wiki" {
   type   = "CNAME"
   value  = "${var.wiki}"
 }
+
+resource "cloudflare_record" "prometheus" {
+  domain = "${var.domain}"
+  name   = "prometheus"
+  type   = "CNAME"
+  value  = "${var.prometheus}"
+}
