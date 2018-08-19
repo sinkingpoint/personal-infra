@@ -63,3 +63,16 @@ resource "aws_security_group" "public_80" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_security_group" "internal_node_exporter" {
+  name        = "Internal Node Exporter"
+  description = "Allow 9100 (Node Exporter) internally"
+  vpc_id      = "${var.sinking_vpc}"
+
+  ingress {
+    from_port   = 9100
+    to_port     = 9100
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+}

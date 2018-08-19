@@ -46,7 +46,12 @@ resource "aws_launch_configuration" "prometheus_launch_conf" {
   iam_instance_profile        = "${aws_iam_instance_profile.prometheus_profile.name}"
   key_name                    = "personal-infra"
   associate_public_ip_address = true
-  security_groups             = ["${aws_security_group.public_ssh.id}", "${aws_security_group.internal_8080.id}"]
+
+  security_groups = [
+    "${aws_security_group.public_ssh.id}",
+    "${aws_security_group.internal_8080.id}",
+    "${aws_security_group.internal_node_exporter.id}",
+  ]
 
   root_block_device {
     volume_size = 256
