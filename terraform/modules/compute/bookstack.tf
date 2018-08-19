@@ -80,6 +80,12 @@ resource "aws_autoscaling_group" "bookstack_autoscaling_group" {
     create_before_destroy = true
   }
 
+  tag {
+    key                 = "Name"
+    value               = "Bookstack"
+    propagate_at_launch = true
+  }
+
   depends_on = ["aws_instance.database_master"]
 }
 

@@ -86,4 +86,8 @@ resource "aws_instance" "database_master" {
   associate_public_ip_address = true
   key_name                    = "personal-infra"
   iam_instance_profile        = "${aws_iam_instance_profile.database_profile.name}"
+
+  tags {
+    Name = "Database"
+  }
 }

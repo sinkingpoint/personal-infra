@@ -93,6 +93,12 @@ resource "aws_autoscaling_group" "prometheus_autoscaling_group" {
   launch_configuration = "${aws_launch_configuration.prometheus_launch_conf.id}"
   vpc_zone_identifier  = ["${var.sinking_subnet_eu_west_2a}"]
 
+  tag {
+    key                 = "Name"
+    value               = "Prometheus"
+    propagate_at_launch = true
+  }
+
   lifecycle {
     create_before_destroy = true
   }
