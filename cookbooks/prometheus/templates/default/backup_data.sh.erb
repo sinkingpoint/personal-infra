@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+to_backup=$(mktemp)
+docker restart prometheus
+tar -zcvf "${to_backup}" /opt/prometheus/storage
+aws s3 cp --region eu-west-2 "${to_backup}" s3://sinking-database-backups/prometheus/"latest.bak"
+rm "${to_backup}"
