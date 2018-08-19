@@ -7,3 +7,14 @@ scrape_configs:
     ec2_sd_configs:
       - region: eu-west-2
         port: 9100
+    relabel_configs:
+      - source_labels:
+          - '__meta_ec2_tag_Name'
+        target_labels:
+          - name
+        action: replace
+      - source_labels:
+          - '__meta_ec2_instance_state'
+        target_labels:
+          - 'state'
+        action: replace
