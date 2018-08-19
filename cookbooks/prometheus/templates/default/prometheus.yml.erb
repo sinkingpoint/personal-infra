@@ -10,11 +10,9 @@ scrape_configs:
     relabel_configs:
       - source_labels:
           - '__meta_ec2_tag_Name'
-        target_labels:
-          - name
+        target_label: name
         action: replace
       - source_labels:
           - '__meta_ec2_instance_state'
-        target_labels:
-          - 'state'
+        target_label: state
         action: replace
