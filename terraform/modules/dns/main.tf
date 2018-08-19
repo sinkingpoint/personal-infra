@@ -14,7 +14,7 @@ resource "cloudflare_record" "corvus_in" {
 
 resource "cloudflare_record" "wiki" {
   domain  = "${var.domain}"
-  name    = "wiki-2"
+  name    = "wiki"
   type    = "CNAME"
   value   = "${var.wiki}"
   proxied = true
