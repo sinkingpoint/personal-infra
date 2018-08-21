@@ -1,0 +1,1 @@
+default['prometheus']['exporters']['install_location'] = '/opt/prometheus-exporters'
