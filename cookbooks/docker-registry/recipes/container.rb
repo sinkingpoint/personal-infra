@@ -12,9 +12,9 @@ end
 docker_container 'bookstack' do
   repo 'registry'
   tag '2'
-  port '5000:5000'
+  port '8080:5000'
   env [
     'REGISTRY_STORAGE_S3_REGION=eu-west-2',
-    'REGISTRY_STORAGE_S3_BUCKET=sinking-registry'
+    "REGISTRY_STORAGE_S3_BUCKET=#{node['docker-registry']['bucket']}"
   ]
 end
