@@ -18,5 +18,10 @@ else
     cd "${REPO_PATH}" && git pull origin master
 fi
 
+if [[ ! -f /opt/prometheus/last_backup.txt ]]; then
+  /opt/prometheus/scripts/restore_db.sh
+  date +%s > /opt/db/last_backup.txt
+fi
+
 find "${REPO_PATH}/cookbooks" -type f -name Berksfile -exec berks vendor -b {} "${REPO_PATH}/cookbooks" \;
 cd "${REPO_PATH}" && chef-client -z -r 'common,prometheus'
