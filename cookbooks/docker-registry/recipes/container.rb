@@ -13,7 +13,7 @@ docker_image 'registry' do
   action :pull
 end
 
-docker_container 'ocasta/docker-registry' do
+docker_container 'registry' do
   repo 'ocasta/docker-registry'
   tag 'master'
   port '8080:5000'
