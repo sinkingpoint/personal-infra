@@ -18,5 +18,5 @@ scrape_configs:
         action: replace
   - job_name: 'utilities'
     static_configs:
-      targets:
+      - targets:
         - 127.0.0.1:8000
