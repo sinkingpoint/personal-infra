@@ -16,3 +16,7 @@ scrape_configs:
           - '__meta_ec2_instance_state'
         target_label: state
         action: replace
+  - job_name: 'utilities'
+    static_configs:
+      targets:
+        - 127.0.0.1:8000
