@@ -18,21 +18,24 @@ resource "aws_iam_policy" "prometheus_policy" {
     {
       "Effect": "Allow",
       "Action": [
-          "ssm:GetParameter"
+          "ssm:GetParameter",
+          "ssm:GetParameters"
       ],
       "Resource": "${data.aws_ssm_parameter.heat_org.arn}"
     },
     {
       "Effect": "Allow",
       "Action": [
-          "ssm:GetParameter"
+          "ssm:GetParameter",
+          "ssm:GetParameters"
       ],
       "Resource": "${data.aws_ssm_parameter.heat_account.arn}"
     },
     {
       "Effect": "Allow",
       "Action": [
-          "ssm:GetParameter"
+          "ssm:GetParameter",
+          "ssm:GetParameters"
       ],
       "Resource": "${data.aws_ssm_parameter.heat_token.arn}"
     },
