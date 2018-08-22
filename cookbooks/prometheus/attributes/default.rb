@@ -1,1 +1,1 @@
-default['prometheus']['exporters']['install_location'] = '/opt/prometheus-exporters'
+default['prometheus']['exporters']['listen_ip'] = (node['network']['interfaces']['eth0']['addresses'].select { |a, details| details[:family] == 'inet'}).keys[0]
