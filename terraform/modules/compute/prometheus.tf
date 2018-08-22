@@ -1,8 +1,41 @@
+data "aws_ssm_parameter" "heat_org" {
+  name = "heat_org"
+}
+
+data "aws_ssm_parameter" "heat_account" {
+  name = "heat_account"
+}
+
+data "aws_ssm_parameter" "heat_token" {
+  name = "heat_token"
+}
+
 resource "aws_iam_policy" "prometheus_policy" {
   policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+          "ssm:GetParameter"
+      ],
+      "Resource": "${data.aws_ssm_parameter.heat_org.arn}"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+          "ssm:GetParameter"
+      ],
+      "Resource": "${data.aws_ssm_parameter.heat_account.arn}"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+          "ssm:GetParameter"
+      ],
+      "Resource": "${data.aws_ssm_parameter.heat_token.arn}"
+    },
     {
       "Effect": "Allow",
       "Action": "ec2:Describe*",
