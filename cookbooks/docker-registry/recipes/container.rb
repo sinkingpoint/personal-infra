@@ -3,15 +3,19 @@ docker_service 'default' do
   action [:create, :start]
 end
 
+# We use ocasta/docker-registry here because the upstream
+# docker registry image doesn't support eu-west-2 as a region
+# yet. https://github.com/docker/distribution-library-image/issues/63
+
 docker_image 'registry' do
-  repo 'registry'
-  tag '2'
+  repo 'ocasta/docker-registry'
+  tag 'master'
   action :pull
 end
 
-docker_container 'bookstack' do
-  repo 'registry'
-  tag '2'
+docker_container 'ocasta/docker-registry' do
+  repo 'ocasta/docker-registry'
+  tag 'master'
   port '8080:5000'
   env [
     'REGISTRY_STORAGE=s3',
