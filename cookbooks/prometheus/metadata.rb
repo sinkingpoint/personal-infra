@@ -7,4 +7,3 @@ long_description 'Installs/Configures prometheus via docker'
 version '0.1.0'
 
 depends 'docker'
-depends 'poise-python'

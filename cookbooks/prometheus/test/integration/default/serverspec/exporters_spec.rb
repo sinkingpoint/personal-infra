@@ -1,4 +1,5 @@
-describe file('/opt/prometheus-exporters') do
-  it { should exist }
-  it { should be_directory }
+require 'spec_helper.rb'
+
+describe command('docker ps -a') do
+  its(:stdout) { should match /sinkingpoint\/utilities_exporter:master/ }
 end

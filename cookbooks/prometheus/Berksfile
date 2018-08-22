@@ -1,6 +1,5 @@
 source 'https://supermarket.chef.io'
 
 cookbook 'docker', '~> 4.4.1'
-cookbook 'poise-python', '~> 1.7.0'
 
 metadata

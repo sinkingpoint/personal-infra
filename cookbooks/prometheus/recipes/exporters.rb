@@ -1,15 +1,16 @@
-package 'git'
-
-directory node['prometheus']['exporters']['install_location'] do
-  recursive true
+docker_image 'utilities_exporter' do
+  repo 'sinkingpoint/utilities_exporter'
+  tag 'master'
+  action :pull
 end
 
-git 'exporters' do
-  repository 'https://github.com/sinkingpoint/prometheus-exporters.git'
-  destination node['prometheus']['exporters']['install_location']
+docker_container 'utilities_exporter' do
+  repo 'sinkingpoint/utilities_exporter'
+  tag 'master'
+  port '8000:8000'
+  env [
+    "HEAT_ORG=#{node['prometheus']['exporters']['heat_org']}", 
+    "HEAT_ACCOUNT=#{node['prometheus']['exporters']['heat_account']}",
+    "HEAT_TOKEN=#{node['prometheus']['exporters']['heat_token']}"
+  ]
 end
-
-python_runtime '2'
-
-python_virtualenv ::File.join(node['prometheus']['exporters']['install_location'], 'venv')
-pip_requirements ::File.join(node['prometheus']['exporters']['install_location'], 'requirements.txt')
