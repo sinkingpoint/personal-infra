@@ -1,0 +1,1 @@
+default['grafana']['root_password'] = 'changeme'
