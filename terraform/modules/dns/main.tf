@@ -27,3 +27,11 @@ resource "cloudflare_record" "prometheus" {
   value   = "${var.prometheus}"
   proxied = true
 }
+
+resource "cloudflare_record" "grafana" {
+  domain  = "${var.domain}"
+  name    = "grafana"
+  type    = "CNAME"
+  value   = "${var.grafana}"
+  proxied = true
+}

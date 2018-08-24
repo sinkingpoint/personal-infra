@@ -13,3 +13,7 @@ output "bookstack_cname_target" {
 output "prometheus_cname_target" {
   value = "${aws_elb.prometheus_elb.dns_name}"
 }
+
+output "grafana_cname_target" {
+  value = "${aws_elb.grafana_elb.dns_name}"
+}

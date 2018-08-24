@@ -7,3 +7,5 @@ variable "corvus_in" {}
 variable "wiki" {}
 
 variable "prometheus" {}
+
+variable "grafana" {}

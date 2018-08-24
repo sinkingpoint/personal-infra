@@ -29,4 +29,5 @@ module "dns" {
   corvus_in  = "${module.compute.db_internal_ip}"
   wiki       = "${module.compute.bookstack_cname_target}"
   prometheus = "${module.compute.prometheus_cname_target}"
+  grafana    = "${module.compute.grafana_cname_target}"
 }
