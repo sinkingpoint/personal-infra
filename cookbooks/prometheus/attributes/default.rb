@@ -6,6 +6,6 @@ override['nginx']['servers'] = [
   },
   {
     name: 'alertmanager.sinkingpoint.com',
-    port: 8080
+    port: 9090
   }
 ]
