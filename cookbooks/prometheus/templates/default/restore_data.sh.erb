@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker stop prometheus
+aws s3 cp s3://sinking-database-backups/prometheus/latest.bak .
+tar -xf latest.bak -C /
+rm latest.bak
+docker start prometheus
