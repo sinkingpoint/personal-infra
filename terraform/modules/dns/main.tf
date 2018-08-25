@@ -15,7 +15,7 @@ resource "cloudflare_record" "corvus_in" {
 resource "cloudflare_record" "wiki" {
   domain  = "${var.domain}"
   name    = "wiki"
-  type    = "CNAME"
+  type    = "A"
   value   = "${var.wiki}"
   proxied = true
 }
@@ -23,15 +23,23 @@ resource "cloudflare_record" "wiki" {
 resource "cloudflare_record" "prometheus" {
   domain  = "${var.domain}"
   name    = "prometheus"
-  type    = "CNAME"
+  type    = "A"
   value   = "${var.prometheus}"
   proxied = true
+}
+
+resource "cloudflare_record" "prometheus_in" {
+  domain  = "${var.domain}"
+  name    = "prometheus.in"
+  type    = "A"
+  value   = "${var.prometheus}"
+  proxied = false
 }
 
 resource "cloudflare_record" "grafana" {
   domain  = "${var.domain}"
   name    = "grafana"
-  type    = "CNAME"
+  type    = "A"
   value   = "${var.grafana}"
   proxied = true
 }

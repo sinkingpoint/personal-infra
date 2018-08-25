@@ -6,14 +6,26 @@ output "db_ip" {
   value = "${aws_instance.database_master.public_ip}"
 }
 
-output "bookstack_cname_target" {
-  value = "${aws_elb.bookstack_elb.dns_name}"
+output "bookstack_internal_ip" {
+  value = "${aws_instance.bookstack_instance.private_ip}"
 }
 
-output "prometheus_cname_target" {
-  value = "${aws_elb.prometheus_elb.dns_name}"
+output "bookstack_ip" {
+  value = "${aws_instance.bookstack_instance.public_ip}"
 }
 
-output "grafana_cname_target" {
-  value = "${aws_elb.grafana_elb.dns_name}"
+output "prometheus_internal_ip" {
+  value = "${aws_instance.prometheus_instance.private_ip}"
+}
+
+output "prometheus_ip" {
+  value = "${aws_instance.prometheus_instance.public_ip}"
+}
+
+output "grafana_internal_ip" {
+  value = "${aws_instance.grafana_instance.private_ip}"
+}
+
+output "grafana_ip" {
+  value = "${aws_instance.grafana_instance.public_ip}"
 }

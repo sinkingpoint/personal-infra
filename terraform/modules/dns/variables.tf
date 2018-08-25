@@ -8,4 +8,6 @@ variable "wiki" {}
 
 variable "prometheus" {}
 
+variable "prometheus_in" {}
+
 variable "grafana" {}
