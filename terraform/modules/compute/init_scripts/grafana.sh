@@ -37,4 +37,4 @@ cat > "${output_file}" <<EOF
 EOF
 
 find "${REPO_PATH}/cookbooks" -type f -name Berksfile -exec berks vendor -b {} "${REPO_PATH}/cookbooks" \;
-cd "${REPO_PATH}" && chef-client  -j "${output_file}" -z -r 'common,grafana'
+cd "${REPO_PATH}" && chef-client  -j "${output_file}" -z -r 'common,nginx,grafana'

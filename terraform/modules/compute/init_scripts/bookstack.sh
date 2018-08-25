@@ -34,4 +34,4 @@ cat > "${output_file}" <<EOF
 }
 EOF
 
-cd "${REPO_PATH}" && chef-client -j "${output_file}" -z -r 'common,bookstack'
+cd "${REPO_PATH}" && chef-client -j "${output_file}" -z -r 'common,nginx,bookstack'
