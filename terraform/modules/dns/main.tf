@@ -43,3 +43,11 @@ resource "cloudflare_record" "grafana" {
   value   = "${var.grafana}"
   proxied = true
 }
+
+resource "cloudflare_record" "alertmanager" {
+  domain  = "${var.domain}"
+  name    = "alertmanager"
+  type    = "A"
+  value   = "${var.prometheus}"
+  proxied = true
+}
