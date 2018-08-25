@@ -3,5 +3,9 @@ override['nginx']['servers'] = [
   {
     name: 'prometheus.sinkingpoint.com',
     port: 8080
+  },
+  {
+    name: 'alertmanager.sinkingpoint.com',
+    port: 8080
   }
 ]
