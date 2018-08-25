@@ -32,7 +32,7 @@ resource "cloudflare_record" "prometheus_in" {
   domain  = "${var.domain}"
   name    = "prometheus.in"
   type    = "A"
-  value   = "${var.prometheus}"
+  value   = "${var.prometheus_in}"
   proxied = false
 }
 
