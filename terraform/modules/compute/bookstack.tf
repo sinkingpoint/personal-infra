@@ -62,6 +62,7 @@ resource "aws_instance" "bookstack_instance" {
 
   vpc_security_group_ids = [
     "${aws_security_group.public_ssh.id}",
+    "${aws_security_group.public_80.id}",
     "${aws_security_group.internal_8080.id}",
     "${aws_security_group.internal_node_exporter.id}",
   ]
