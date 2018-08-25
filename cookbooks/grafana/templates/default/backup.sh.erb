@@ -1,5 +1,5 @@
 #!/bin/bash
 
 docker stop grafana
-aws s3 /opt/grafana/grafana.db s3://sinking-database-backups/grafana/grafana.db
+aws s3 cp /opt/grafana/grafana.db s3://sinking-database-backups/grafana/grafana.db
 docker start grafana
