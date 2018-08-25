@@ -14,6 +14,33 @@ resource "aws_iam_policy" "grafana_policy" {
           "ssm:GetParameters"
       ],
       "Resource": "${data.aws_ssm_parameter.grafana_root_password.arn}"
+    },
+    {
+      "Sid": "Stmt1534460117429",
+      "Action": [
+        "s3:DeleteObject",
+        "s3:DeleteObjectTagging",
+        "s3:DeleteObjectVersion",
+        "s3:DeleteObjectVersionTagging",
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:GetObjectTagging",
+        "s3:GetObjectTorrent",
+        "s3:GetObjectVersion",
+        "s3:GetObjectVersionAcl",
+        "s3:GetObjectVersionForReplication",
+        "s3:GetObjectVersionTagging",
+        "s3:GetObjectVersionTorrent",
+        "s3:GetReplicationConfiguration",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionAcl",
+        "s3:ReplicateObject",
+        "s3:RestoreObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "${data.aws_s3_bucket.database_backups.arn}/*"
     }
   ]
 }

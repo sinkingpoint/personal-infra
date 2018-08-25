@@ -20,11 +20,6 @@ else
     cd "${REPO_PATH}" && git pull origin master
 fi
 
-if [[ ! -f /opt/prometheus/last_backup.txt ]]; then
-  /opt/prometheus/scripts/restore_db.sh
-  date +%s > /opt/db/last_backup.txt
-fi
-
 root_password=$(/usr/local/bin/aws ssm get-parameter --name grafana_root_password --region eu-west-2 | jq -r '.Parameter.Value')
 
 output_file=$(mktemp)
@@ -38,3 +33,8 @@ EOF
 
 find "${REPO_PATH}/cookbooks" -type f -name Berksfile -exec berks vendor -b {} "${REPO_PATH}/cookbooks" \;
 cd "${REPO_PATH}" && chef-client  -j "${output_file}" -z -r 'common,nginx,grafana'
+
+if [[ ! -f /opt/grafana/last_backup.txt ]]; then
+  /opt/grafana/scripts/restore_db.sh
+  date +%s > /opt/grafana/last_backup.txt
+fi

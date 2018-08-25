@@ -20,11 +20,6 @@ else
     cd "${REPO_PATH}" && git pull origin master
 fi
 
-if [[ ! -f /opt/prometheus/last_backup.txt ]]; then
-  /opt/prometheus/scripts/restore_db.sh
-  date +%s > /opt/db/last_backup.txt
-fi
-
 heat_org=$(/usr/local/bin/aws ssm get-parameter --name heat_org --region eu-west-2 | jq -r '.Parameter.Value')
 heat_account=$(/usr/local/bin/aws ssm get-parameter --name heat_account --region eu-west-2 | jq -r '.Parameter.Value')
 heat_token=$(/usr/local/bin/aws ssm get-parameter --name heat_token --region eu-west-2 | jq -r '.Parameter.Value')
@@ -44,3 +39,8 @@ EOF
 
 find "${REPO_PATH}/cookbooks" -type f -name Berksfile -exec berks vendor -b {} "${REPO_PATH}/cookbooks" \;
 cd "${REPO_PATH}" && chef-client  -j "${output_file}" -z -r 'common,nginx,prometheus'
+
+if [[ ! -f /opt/prometheus/last_backup.txt ]]; then
+  /opt/prometheus/scripts/restore_db.sh
+  date +%s > /opt/prometheus/last_backup.txt
+fi
