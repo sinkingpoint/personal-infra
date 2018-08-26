@@ -57,5 +57,5 @@ resource "cloudflare_record" "alertmanager_in" {
   name    = "alertmanager.in"
   type    = "A"
   value   = "${var.prometheus_in}"
-  proxied = true
+  proxied = false
 }
