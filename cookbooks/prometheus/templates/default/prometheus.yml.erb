@@ -27,3 +27,7 @@ scrape_configs:
     static_configs:
       - targets:
         - <%= @exporter_listen_ip %>:8000
+  - job_name: alertmanager
+    static_configs:
+      - targets:
+        - alertmanager.in.sinkingpoint.com:9090
