@@ -144,7 +144,7 @@ resource "aws_instance" "prometheus_instance" {
   ]
 
   root_block_device {
-    volume_size = 256
+    volume_size = 64
   }
 
   tags {
