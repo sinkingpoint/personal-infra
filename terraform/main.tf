@@ -31,4 +31,5 @@ module "dns" {
   prometheus    = "${module.compute.prometheus_ip}"
   prometheus_in = "${module.compute.prometheus_internal_ip}"
   grafana       = "${module.compute.grafana_ip}"
+  jenkins       = "${module.compute.jenkins_ip}"
 }

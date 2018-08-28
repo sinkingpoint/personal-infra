@@ -29,3 +29,7 @@ output "grafana_internal_ip" {
 output "grafana_ip" {
   value = "${aws_instance.grafana_instance.public_ip}"
 }
+
+output "jenkins_ip" {
+  value = "${aws_instance.jenkins_instance.public_ip}"
+}

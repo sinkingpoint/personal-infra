@@ -59,3 +59,11 @@ resource "cloudflare_record" "alertmanager_in" {
   value   = "${var.prometheus_in}"
   proxied = false
 }
+
+resource "cloudflare_record" "jenkins" {
+  domain  = "${var.domain}"
+  name    = "jenkins"
+  type    = "A"
+  value   = "${var.jenkins}"
+  proxied = false
+}

@@ -11,3 +11,5 @@ variable "prometheus" {}
 variable "prometheus_in" {}
 
 variable "grafana" {}
+
+variable "jenkins" {}
