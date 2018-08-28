@@ -68,7 +68,7 @@ resource "aws_iam_instance_profile" "jenkins_profile" {
 
 resource "aws_instance" "jenkins_instance" {
   ami                         = "${data.aws_ami.debian-stretch.id}"
-  instance_type               = "t2.nano"
+  instance_type               = "t2.micro"
   user_data                   = "${file("${path.module}/init_scripts/jenkins.sh")}"
   iam_instance_profile        = "${aws_iam_instance_profile.jenkins_profile.name}"
   key_name                    = "personal-infra"
