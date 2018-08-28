@@ -21,7 +21,7 @@ else
 fi
 
 find "${REPO_PATH}/cookbooks" -type f -name Berksfile -exec berks vendor -b {} "${REPO_PATH}/cookbooks" \;
-cd "${REPO_PATH}" && chef-client -z -r 'common,nginx,prometheus'
+cd "${REPO_PATH}" && chef-client -z -r 'common,nginx,jenkins'
 
 if [[ ! -f /opt/jenkins/last_backup.txt ]]; then
   /opt/jenkins/scripts/restore_db.sh
