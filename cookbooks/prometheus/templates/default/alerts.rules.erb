@@ -1,0 +1,8 @@
+groups:
+- name: alerts
+  rules:
+  - alert: Node_Down
+    expr: sum(up{job="node"}) by (name)
+    for: 1m
+    annotations:
+      summary: A service is down

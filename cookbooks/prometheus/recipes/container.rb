@@ -15,6 +15,7 @@ docker_container 'prometheus' do
   port '8080:9090'
   volumes [
     '/opt/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml',
-    '/opt/prometheus/storage:/prometheus'
+    '/opt/prometheus/storage:/prometheus',
+    '/opt/prometheus/rules:/rules'
   ]
 end
