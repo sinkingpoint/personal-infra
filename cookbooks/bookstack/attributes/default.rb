@@ -4,3 +4,5 @@ override['nginx']['servers'] = [
     port: 8080
   }
 ]
+
+default['bookstack']['db']['password'] = 'meep'

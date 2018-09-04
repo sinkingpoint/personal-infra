@@ -18,11 +18,11 @@ end
 docker_container 'prometheus' do
   repo 'jenkins/jenkins'
   tag 'lts-slim'
+  restart_policy 'always'
   port [
     '8080:8080',
     '50000:50000'
   ]
-  
   volumes [
     '/opt/jenkins/storage:/var/jenkins_home'
   ]
