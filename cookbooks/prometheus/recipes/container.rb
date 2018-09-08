@@ -19,4 +19,5 @@ docker_container 'prometheus' do
     '/opt/prometheus/storage:/prometheus',
     '/opt/prometheus/rules:/rules'
   ]
+  command '--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.retention=7d'
 end
