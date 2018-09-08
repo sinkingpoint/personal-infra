@@ -9,3 +9,5 @@ override['nginx']['servers'] = [
     port: 9090
   }
 ]
+
+default['alertmanager']['slack_webhook'] = 'https://cats'
