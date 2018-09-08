@@ -23,6 +23,7 @@ fi
 heat_org=$(/usr/local/bin/aws ssm get-parameter --name heat_org --region eu-west-2 | jq -r '.Parameter.Value')
 heat_account=$(/usr/local/bin/aws ssm get-parameter --name heat_account --region eu-west-2 | jq -r '.Parameter.Value')
 heat_token=$(/usr/local/bin/aws ssm get-parameter --name heat_token --region eu-west-2 | jq -r '.Parameter.Value')
+slack_webhook_url=$(/usr/local/bin/aws ssm get-parameter --name slack_webhook_url --region eu-west-2 | jq -r '.Parameter.Value')
 
 output_file=$(mktemp)
 cat > "${output_file}" <<EOF
@@ -33,6 +34,9 @@ cat > "${output_file}" <<EOF
             "heat_account": "${heat_account}",
             "heat_token": "${heat_token}"
         }
+    },
+    "alertmanager": {
+        "slack_webhook": "${slack_webhook_url}"
     }
 }
 EOF

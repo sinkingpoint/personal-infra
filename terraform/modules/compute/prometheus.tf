@@ -10,6 +10,10 @@ data "aws_ssm_parameter" "heat_token" {
   name = "heat_token"
 }
 
+data "aws_ssm_parameter" "slack_webhook_url" {
+  name = "slack_webhook_url"
+}
+
 resource "aws_iam_policy" "prometheus_policy" {
   policy = <<EOF
 {
@@ -38,6 +42,14 @@ resource "aws_iam_policy" "prometheus_policy" {
           "ssm:GetParameters"
       ],
       "Resource": "${data.aws_ssm_parameter.heat_token.arn}"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+          "ssm:GetParameter",
+          "ssm:GetParameters"
+      ],
+      "Resource": "${data.aws_ssm_parameter.slack_webhook_url.arn}"
     },
     {
       "Effect": "Allow",
