@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": ""
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "eu-west-2",
+    "source_ami_filter": {
+      "filters": {
+      "virtualization-type": "hvm",
+      "name": "sinking-base-image *",
+      "root-device-type": "ebs"
+      },
+      "owners": ["274171627084"],
+      "most_recent": true
+    },
+    "instance_type": "t2.micro",
+    "ssh_username": "admin",
+    "ami_name": "sinking-build-slave {{timestamp}}"
+  }],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "provision.sh"
+    }
+  ]
+}
