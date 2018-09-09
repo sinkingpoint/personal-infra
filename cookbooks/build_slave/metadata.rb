@@ -1,0 +1,7 @@
+name 'build_slave'
+maintainer 'Colin Douch'
+maintainer_email 'colin@quirl.co.nz'
+license 'all_rights'
+description 'Installs/Configures a build slave for my jenkins instance'
+long_description 'Installs/Configures a build slave for my jenkins instance'
+version '0.1.0'

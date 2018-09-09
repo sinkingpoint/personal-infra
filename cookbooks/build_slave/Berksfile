@@ -1,0 +1,5 @@
+source 'https://supermarket.chef.io'
+
+cookbook 'prometheus_exporters', git: 'https://github.com/evilmartians/chef-prometheus-exporters'
+
+metadata
