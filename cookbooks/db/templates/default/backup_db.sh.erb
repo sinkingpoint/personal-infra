@@ -1,8 +1,13 @@
 #!/bin/bash
 
+set -e
+set -u
+
 to_upload=$(mktemp)
 
 /usr/bin/mysqldump --all-databases -u root -p<%= @root_password %> > "${to_upload}"
-/usr/bin/aws s3 cp --region eu-west-2 "${to_upload}" s3://sinking-database-backups/"$(date '+%Y-%m-%d').bak"
-/usr/bin/aws s3 cp --region eu-west-2 "${to_upload}" s3://sinking-database-backups/latest.bak
+/usr/bin/aws s3 cp --region eu-west-2 "${to_upload}" s3://<%= @backups_bucket %>/"$(date '+%Y-%m-%d').bak"
+/usr/bin/aws s3 cp --region eu-west-2 "${to_upload}" s3://<%= @backups_bucket %>/latest.bak
 rm "${to_upload}"
+
+echo 'last_backup{job="MariaDB"} ' $(date +%s) >> <%= @prometheus_textfile_dir %>/mariadb_last_backup.prom

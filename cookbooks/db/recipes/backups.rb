@@ -6,7 +6,9 @@ template '/opt/db/scripts/backup_db.sh' do
     source 'backup_db.sh.erb'
     mode 0700
     variables ({
-        root_password: node['mariadb']['server_root_password']
+        root_password: node['mariadb']['server_root_password'],
+        prometheus_textfile_dir: node['prometheus']['node_exporter']['dir'],
+        backups_bucket: node['backups']['s3_bucket']
     })
 end
 

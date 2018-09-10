@@ -7,4 +7,4 @@ docker stop grafana
 aws s3 cp /opt/grafana/grafana.db s3://<%= @backups_bucket %>/grafana/grafana.db
 docker start grafana
 
-echo 'last_backup{name="Grafana"} ' $(date +%s) >> <%= @prometheus_textfile_dir %>/grafana_last_backup.prom
+echo 'last_backup{job="Grafana"} ' $(date +%s) >> <%= @prometheus_textfile_dir %>/grafana_last_backup.prom

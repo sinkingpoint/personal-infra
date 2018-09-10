@@ -8,3 +8,6 @@ default['db']['databases'] = [
         password: '*061678EB0D19DA2B71FE6D30361DBB2C0A59EC94'
     }
 ]
+
+default['prometheus']['node_exporter']['dir'] = '/opt/node_exporter/text_files'
+default['backups']['s3_bucket'] = 'sinking-database-backups'
