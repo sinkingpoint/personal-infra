@@ -6,7 +6,7 @@ pipeline {
       parallel {
         for(String folder : subfolders){
           stage('Testing ' + folder) {
-            sh('echo Testing ' + folder')
+            sh('echo Testing ' + folder)
           }
         }
       }
