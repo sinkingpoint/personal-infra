@@ -5,3 +5,6 @@ override['nginx']['servers'] = [
     port: 8080
   }
 ]
+
+default['prometheus']['node_exporter']['dir'] = '/opt/node_exporter/text_files'
+default['backups']['s3_bucket'] = 'sinking-database-backups'

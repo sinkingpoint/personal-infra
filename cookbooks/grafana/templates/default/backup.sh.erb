@@ -1,5 +1,10 @@
 #!/bin/bash
 
+set -e
+set -u
+
 docker stop grafana
-aws s3 cp /opt/grafana/grafana.db s3://sinking-database-backups/grafana/grafana.db
+aws s3 cp /opt/grafana/grafana.db s3://<%= @backups_bucket %>/grafana/grafana.db
 docker start grafana
+
+echo 'grafana_last_backup ' $(date +%s) >> <%= @prometheus_textfile_dir %>/grafana_last_backup.prom
