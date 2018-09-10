@@ -80,7 +80,7 @@ resource "aws_iam_instance_profile" "grafana_profile" {
 
 resource "aws_instance" "grafana_instance" {
   ami                         = "${data.aws_ami.debian-stretch.id}"
-  instance_type               = "t2.nano"
+  instance_type               = "t3.nano"
   user_data                   = "${file("${path.module}/init_scripts/grafana.sh")}"
   iam_instance_profile        = "${aws_iam_instance_profile.grafana_profile.name}"
   key_name                    = "personal-infra"
