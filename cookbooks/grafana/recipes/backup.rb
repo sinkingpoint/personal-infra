@@ -17,7 +17,7 @@ template '/opt/grafana/scripts/restore_db.sh' do
 end
 
 cron 'backup_db' do
-  command '/opt/grafana/scripts/backup.sh && date +%s > /opt/grafana/last_backup.txt'
+  command '/opt/grafana/scripts/backup_db.sh && date +%s > /opt/grafana/last_backup.txt'
   hour '*/2'
   minute '30'
 end
