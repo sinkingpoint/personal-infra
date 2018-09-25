@@ -67,3 +67,67 @@ resource "cloudflare_record" "jenkins" {
   value   = "${var.jenkins}"
   proxied = false
 }
+
+resource "cloudflare_record" "chordata" {
+  domain  = "${var.domain}"
+  name    = "chordata"
+  type    = "A"
+  value   = "192.168.1.29"
+  proxied = false
+}
+
+resource "cloudflare_record" "radarr" {
+  domain  = "${var.domain}"
+  name    = "radarr"
+  type    = "CNAME"
+  value   = "chordata.sinkingpoint.com"
+  proxied = false
+}
+
+resource "cloudflare_record" "sonarr" {
+  domain  = "${var.domain}"
+  name    = "sonarr"
+  type    = "CNAME"
+  value   = "chordata.sinkingpoint.com"
+  proxied = false
+}
+
+resource "cloudflare_record" "transmission" {
+  domain  = "${var.domain}"
+  name    = "transmission"
+  type    = "CNAME"
+  value   = "chordata.sinkingpoint.com"
+  proxied = false
+}
+
+resource "cloudflare_record" "plexpy" {
+  domain  = "${var.domain}"
+  name    = "plexpy"
+  type    = "CNAME"
+  value   = "chordata.sinkingpoint.com"
+  proxied = false
+}
+
+resource "cloudflare_record" "plex" {
+  domain  = "${var.domain}"
+  name    = "plex"
+  type    = "CNAME"
+  value   = "chordata.sinkingpoint.com"
+  proxied = false
+}
+
+resource "cloudflare_record" "jackett" {
+  domain  = "${var.domain}"
+  name    = "jackett"
+  type    = "CNAME"
+  value   = "chordata.sinkingpoint.com"
+  proxied = false
+}
+
+resource "cloudflare_record" "callabus" {
+  domain  = "${var.domain}"
+  name    = "callabus"
+  type    = "A"
+  value   = "192.168.1.28"
+  proxied = false
+}
