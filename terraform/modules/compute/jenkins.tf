@@ -29,6 +29,11 @@ resource "aws_iam_policy" "jenkins_policy" {
       ],
       "Effect": "Allow",
       "Resource": "${data.aws_s3_bucket.database_backups.arn}/*"
+    },
+    {
+      "Action": "ec2:*",
+      "Effect": "Allow",
+      "Resource": "*"
     }
   ]
 }
