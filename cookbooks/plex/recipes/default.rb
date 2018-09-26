@@ -1,0 +1,7 @@
+include_recipe 'plex::network'
+include_recipe 'plex::plex'
+include_recipe 'plex::tautulli'
+include_recipe 'plex::radarr'
+include_recipe 'plex::sonarr'
+include_recipe 'plex::transmission'
+include_recipe 'plex::jackett'
