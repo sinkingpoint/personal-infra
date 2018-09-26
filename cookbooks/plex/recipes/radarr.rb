@@ -11,13 +11,13 @@ docker_container 'radarr' do
   repo 'linuxserver/radarr'
   tag 'latest'
   port [
-    '7878'
+    ':7878:7878'
   ]
-  network_mode 'plexnet'
+  network_mode 'up_plexnet'
   env ['PGID=1000', 'PUID=1000', 'TZ=Europe/London']
   volumes [
-    "#{apps_mount_point}/radarr:/config",
-    "#{media_mount_point}/Downloads/completed:/data/completed",
-    "#{media_mount_point}/Movies:/movies"
+    "#{media_mount_point}/Downloads/completed:/data/completed:rw",
+    "#{media_mount_point}/Movies:/movies:rw",
+    "#{apps_mount_point}/radarr:/config:rw"
   ]
 end

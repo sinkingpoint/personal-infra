@@ -10,11 +10,11 @@ docker_container 'transmission' do
   repo 'haugene/transmission-openvpn'
   tag 'latest'
   port [
-    '9091'
+    ':9091:9091'
   ]
   privileged true
   cap_add 'NET_ADMIN'
-  network_mode 'plexnet'
+  network_mode 'up_plexnet'
   env [
     "OPENVPN_PROVIDER=#{node['transmission']['vpn']['provider']}",
     "OPENVPN_CONFIG=#{node['transmission']['vpn']['config']}",
@@ -25,7 +25,7 @@ docker_container 'transmission' do
     'PUID=1000',
   ]
   volumes [
-    "#{media_mount_point}/Downloads:/data",
+    "#{media_mount_point}/Downloads:/data:rw",
     '/etc/localtime:/etc/localtime:ro'
   ]
 end

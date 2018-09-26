@@ -1,0 +1,10 @@
+name 'chordata'
+maintainer 'Colin Douch'
+maintainer_email 'colin@quirl.co.nz'
+license 'all_rights'
+description 'Installs/Configures chordata'
+long_description 'Installs/Configures chordata'
+version '0.1.0'
+
+depends 'common'
+depends 'docker'

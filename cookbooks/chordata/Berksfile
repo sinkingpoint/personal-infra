@@ -1,0 +1,8 @@
+source 'https://supermarket.chef.io'
+
+cookbook 'prometheus_exporters', git: 'https://github.com/evilmartians/chef-prometheus-exporters'
+cookbook 'common', path: '../common'
+
+cookbook 'docker'
+
+metadata

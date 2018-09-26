@@ -11,13 +11,13 @@ docker_container 'sonarr' do
   repo 'linuxserver/sonarr'
   tag 'latest'
   port [
-    '7878'
+    ':8989:8989'
   ]
-  network_mode 'plexnet'
+  network_mode 'up_plexnet'
   env ['PGID=1000', 'PUID=1000', 'TZ=Europe/London']
   volumes [
-    "#{apps_mount_point}/sonarr:/config",
-    "#{media_mount_point}/Downloads/completed:/data/completed",
-    "#{media_mount_point}/TV Shows:/tv"
+    "#{media_mount_point}/Downloads/completed:/data/completed:rw",
+    "#{apps_mount_point}/sonarr:/config:rw",
+    "#{media_mount_point}/TV Shows:/tv:rw"
   ]
 end

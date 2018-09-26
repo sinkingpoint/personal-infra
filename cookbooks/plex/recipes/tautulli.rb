@@ -6,16 +6,16 @@ end
 
 plex_mount_point = node['plex']['plex_mount_point']
 
-docker_container 'tautulli' do
+docker_container 'plexpy' do
   repo 'tautulli/tautulli'
   tag 'latest'
   port [
-    '8181'
+    ':8181:8181'
   ]
-  network_mode 'plexnet'
+  network_mode 'up_plexnet'
   env ['PGID=1000', 'PUID=1000', 'TZ=Europe/London']
   volumes [
-    "#{plex_mount_point}/config:/config",
-    "#{plex_mount_point}/logs:/logs:ro"
+    "#{plex_mount_point}/logs:/logs:rw",
+    "#{plex_mount_point}/config:/config:rw"
   ]
 end

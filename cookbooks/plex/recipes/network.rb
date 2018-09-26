@@ -1,3 +1,3 @@
-docker_network 'plexnet' do
+docker_network 'up_plexnet' do
   driver 'bridge'
 end

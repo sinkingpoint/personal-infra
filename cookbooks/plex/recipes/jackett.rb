@@ -10,11 +10,11 @@ docker_container 'jackett' do
   repo 'linuxserver/jackett'
   tag 'latest'
   port [
-    '9117'
+    ':9117:9117'
   ]
-  network_mode 'plexnet'
+  network_mode 'up_plexnet'
   env ['PGID=1000', 'PUID=1000', 'TZ=Europe/London']
   volumes [
-    "#{apps_mount_point}/jackett:/config"
+    "#{apps_mount_point}/jackett:/config:rw"
   ]
 end
