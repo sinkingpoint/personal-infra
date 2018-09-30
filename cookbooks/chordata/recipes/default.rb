@@ -7,4 +7,4 @@ docker_service 'default' do
   action [:create, :start]
 end
 
-include_recipe 'chordata::plex'
+include_recipe 'plex::plex'
