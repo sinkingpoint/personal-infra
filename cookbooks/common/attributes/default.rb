@@ -18,7 +18,8 @@ default['common']['users'] = [
   }
 ]
 
-default['exporters']['listen_ip'] = (node['network']['interfaces']['eth0']['addresses'].select { |a, details| details[:family] == 'inet'}).keys[0]
+interface = node['network']['interfaces']['eth0'] || node['network']['interfaces']['eno0']
+default['exporters']['listen_ip'] = (interface['addresses'].select { |a, details| details[:family] == 'inet'}).keys[0]
 
 override['prometheus']['node_exporter']['dir'] = '/opt/node_exporter/text_files'
 override['backups']['s3_bucket'] = 'sinking-database-backups'
