@@ -3,6 +3,9 @@ source 'https://supermarket.chef.io'
 cookbook 'prometheus_exporters', git: 'https://github.com/evilmartians/chef-prometheus-exporters'
 cookbook 'common', path: '../common'
 cookbook 'plex', path: '../plex'
+cookbook 'grafana', path: '../grafana'
+cookbook 'prometheus', path: '../prometheus'
+cookbook 'nginx', path: '../nginx'
 
 cookbook 'docker'
 

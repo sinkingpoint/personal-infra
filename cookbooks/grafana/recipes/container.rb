@@ -17,7 +17,7 @@ end
 docker_container 'grafana' do
   repo 'grafana/grafana'
   tag '5.2.3'
-  port '8080:3000'
+  port '8081:3000'
   restart_policy 'always'
   volumes [
     '/opt/grafana:/var/lib/grafana',

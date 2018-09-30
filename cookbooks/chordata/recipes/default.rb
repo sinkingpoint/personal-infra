@@ -8,3 +8,6 @@ docker_service 'default' do
 end
 
 include_recipe 'plex'
+include_recipe 'prometheus'
+include_recipe 'grafana'
+include_recipe 'nginx'

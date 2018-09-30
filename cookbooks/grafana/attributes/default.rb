@@ -2,7 +2,7 @@ default['grafana']['root_password'] = 'changeme'
 override['nginx']['servers'] = [
   {
     name: 'grafana.sinkingpoint.com',
-    port: 8080
+    port: 8081
   }
 ]
 
