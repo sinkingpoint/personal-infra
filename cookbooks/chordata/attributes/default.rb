@@ -4,15 +4,39 @@ override['plex']['media_mount_point'] = '/l1-za/storage/media'
 
 override['nginx']['servers'] = [
   {
-    name: 'grafana.sinkingpoint.com',
-    port: 8081
-  }, 
+    name: 'radarr.sinkingpoint.com',
+    port: 7878
+  },
   {
     name: 'prometheus.sinkingpoint.com',
     port: 8080
   },
   {
+    name: 'grafana.sinkingpoint.com',
+    port: 8081
+  },
+  {
+    name: 'plexpy.sinkingpoint.com',
+    port: 8181
+  },
+  {
+    name: 'sonarr.sinkingpoint.com',
+    port: 8989
+  },
+  {
     name: 'alertmanager.sinkingpoint.com',
     port: 9090
+  },
+  {
+    name: 'transmission.sinkingpoint.com',
+    port: 9091
+  },
+  {
+    name: 'jackett.sinkingpoint.com',
+    port: 9117
+  },
+  {
+    name: 'plex.sinkingpoint.com',
+    port: 32400
   }
 ]
