@@ -1,4 +1,5 @@
-default['prometheus']['exporters']['listen_ip'] = (node['network']['interfaces']['eth0']['addresses'].select { |a, details| details[:family] == 'inet'}).keys[0]
+interface = node['network']['interfaces']['eth0'] || node['network']['interfaces']['eno1']
+default['exporters']['listen_ip'] = (interface['addresses'].select { |a, details| details[:family] == 'inet'}).keys[0]
 override['nginx']['servers'] = [
   {
     name: 'prometheus.sinkingpoint.com',

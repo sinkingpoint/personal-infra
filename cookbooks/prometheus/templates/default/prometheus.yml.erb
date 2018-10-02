@@ -9,28 +9,10 @@ alerting:
   alertmanagers:
     - static_configs:
       - targets:
-        - alertmanager.in.sinkingpoint.com:9090
+        - chordata.sinkingpoint.com:9090
 
 scrape_configs:
-  - job_name: 'node'
-    ec2_sd_configs:
-      - region: eu-west-2
-        port: 9100
-    relabel_configs:
-      - source_labels:
-          - '__meta_ec2_tag_Name'
-        target_label: name
-        action: replace
-      - source_labels:
-          - '__meta_ec2_instance_state'
-        target_label: state
-        action: replace
-  - job_name: 'utilities'
-    metrics_path: '/'
-    static_configs:
-      - targets:
-        - <%= @exporter_listen_ip %>:8000
   - job_name: alertmanager
     static_configs:
       - targets:
-        - alertmanager.in.sinkingpoint.com:9090
+        - chordata.sinkingpoint.com:9090
