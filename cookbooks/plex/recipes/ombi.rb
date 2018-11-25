@@ -6,7 +6,7 @@ end
 
 apps_mount_point = node['plex']['apps_mount_point']
 
-docker_container 'jackett' do
+docker_container 'ombi' do
   repo 'linuxserver/ombi'
   tag 'latest'
   port [
