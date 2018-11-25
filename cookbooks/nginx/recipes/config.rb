@@ -4,6 +4,10 @@ service 'nginx' do
   action :nothing
 end
 
+template '/etc/nginx/proxy.conf' do
+  source 'proxy-conf.erb'
+end
+
 services.each do | service |
   template "/etc/nginx/sites-available/#{service['name']}.conf" do
     source 'nginx-conf.erb'
