@@ -13,7 +13,7 @@ docker_container 'plexpy' do
     ':8181:8181'
   ]
   network_mode 'up_plexnet'
-  env ['PGID=1000', 'PUID=1000', 'TZ=Europe/London']
+  env ['PGID=1026', 'PUID=100', 'TZ=Europe/London']
   volumes [
     "#{plex_mount_point}/logs:/logs:rw",
     "#{plex_mount_point}/config:/config:rw"
