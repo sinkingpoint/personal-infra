@@ -17,17 +17,23 @@ end
 
 services = node['nginx']['servers'] || []
 services.each do |server|
-  systemd_unit "#{server['name']}-argo-tunnel.service" do
-    content <<-EOS
-    [Unit]
-    Description=Cloudflare Argo Tunnel for a Local service
-    After=network.target
+  if server.fetch('tunnel', true) then
+    systemd_unit "#{server['name']}-argo-tunnel.service" do
+      content <<-EOS
+      [Unit]
+      Description=Cloudflare Argo Tunnel for a Local service
+      After=network.target
 
-    [Service]
-    ExecStart=/usr/local/bin/cloudflared --hostname #{server['name']} http://localhost:80
-    Restart=always
-    EOS
+      [Service]
+      ExecStart=/usr/local/bin/cloudflared --hostname #{server['name']} http://localhost:80
+      Restart=always
+      EOS
 
-    action [:create, :enable, :start]
+      action [:create, :enable, :start]
+    end
+  else
+    systemd_unit "#{server['name']}-argo-tunnel.service" do
+      action [:stop, :delete]
+    end
   end
 end
