@@ -5,7 +5,8 @@ override['plex']['media_mount_point'] = '/l1-za/storage/media'
 override['nginx']['servers'] = [
   {
     name: 'radarr.sinkingpoint.com',
-    port: 7878
+    port: 7878,
+    tunnel: false
   },
   {
     name: 'prometheus.sinkingpoint.com',
@@ -21,7 +22,8 @@ override['nginx']['servers'] = [
   },
   {
     name: 'sonarr.sinkingpoint.com',
-    port: 8989
+    port: 8989,
+    tunnel: false
   },
   {
     name: 'alertmanager.sinkingpoint.com',
@@ -29,11 +31,13 @@ override['nginx']['servers'] = [
   },
   {
     name: 'transmission.sinkingpoint.com',
-    port: 9091
+    port: 9091,
+    tunnel: false
   },
   {
     name: 'jackett.sinkingpoint.com',
-    port: 9117
+    port: 9117,
+    tunnel: false
   },
   {
     name: 'plex.sinkingpoint.com',
