@@ -42,5 +42,9 @@ override['nginx']['servers'] = [
   {
     name: 'plex.sinkingpoint.com',
     port: 32400
+  },
+  {
+    name: 'ombi.sinkingpoint.com',
+    port: 3579
   }
 ]
