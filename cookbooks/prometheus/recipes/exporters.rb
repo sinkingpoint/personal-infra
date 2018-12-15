@@ -7,7 +7,7 @@ docker_container 'cadvisor' do
   repo 'google/cadvisor'
   tag 'latest'
   port [
-    ':8080:8080'
+    ':9101:8080'
   ]
   volumes [
     "/:/rootfs:ro",
