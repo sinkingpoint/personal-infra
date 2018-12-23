@@ -46,5 +46,10 @@ override['nginx']['servers'] = [
   {
     name: 'ombi.sinkingpoint.com',
     port: 3579
+  },
+  {
+    name: 'cadvisor.sinkingpoint.com',
+    port: 9101,
+    tunnel: false
   }
 ]
