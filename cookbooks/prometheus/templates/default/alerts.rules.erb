@@ -6,8 +6,8 @@ groups:
     for: 1m
     annotations:
       summary: "{{$labels.name}} is down"
-  - alert: Last_Backup_Too_Old
-    expr: time() - last_backup > 24 * 60 * 60
-    for: 1h
+  - alert: Container_Down
+    expr: container_up == 0
+    for: 1m
     annotations:
-      summary: "{{$labels.exported_job}} has not been backed up in 24h"
+      summary: "Container {{$labels.name}} is down on {{$labels.instance}}"
