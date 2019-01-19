@@ -11,3 +11,8 @@ groups:
     for: 1m
     annotations:
       summary: "Container {{$labels.name}} is down on {{$labels.instance}}"
+  - alert: NAS_Disconnected
+    expr: absent(node_filesystem_size_bytes{fstype="fuse.sshfs"})
+    for: 1m
+    annotations:
+      summary: "{{$labels.mountpoint}} is disconnected"
