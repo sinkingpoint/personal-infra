@@ -12,3 +12,7 @@ override['nginx']['servers'] = [
 ]
 
 default['alertmanager']['slack_webhook'] = 'https://cats'
+override['prometheus']['node_exporter']['dir'] = '/opt/textfile_exporters'
+default['prometheus']['textfile_collectors'] = [
+  'container_status_exporter.sh.erb'
+]

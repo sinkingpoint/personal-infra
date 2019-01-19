@@ -1,3 +1,4 @@
+include_recipe 'prometheus::user'
 include_recipe 'prometheus::config'
 include_recipe 'prometheus::rules'
 include_recipe 'prometheus::backup'

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while read container; do
+  container_name=$(echo $container | awk -F' ' '{print $1}')
+  container_status=$(echo $container | awk -F' ' '{print $2}')
+
+  if [[ ${container_status} == 'Up' ]]; then
+    echo "container_up{name=\"$container_name\"} 1"
+  else
+    echo "container_up{name=\"$container_name\"} 0"
+  fi
+done <<< $(docker ps -a --format '{{.Names}} {{.Status}}')
