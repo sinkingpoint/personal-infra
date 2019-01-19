@@ -10,15 +10,18 @@ override['nginx']['servers'] = [
   },
   {
     name: 'prometheus.sinkingpoint.com',
-    port: 8080
+    port: 8080,
+    tunnel: false
   },
   {
     name: 'grafana.sinkingpoint.com',
-    port: 8081
+    port: 8081,
+    tunnel: false
   },
   {
     name: 'plexpy.sinkingpoint.com',
-    port: 8181
+    port: 8181,
+    tunnel: false
   },
   {
     name: 'sonarr.sinkingpoint.com',
@@ -27,7 +30,8 @@ override['nginx']['servers'] = [
   },
   {
     name: 'alertmanager.sinkingpoint.com',
-    port: 9090
+    port: 9090,
+    tunnel: false
   },
   {
     name: 'transmission.sinkingpoint.com',
@@ -41,11 +45,13 @@ override['nginx']['servers'] = [
   },
   {
     name: 'plex.sinkingpoint.com',
-    port: 32400
+    port: 32400,
+    tunnel: false
   },
   {
     name: 'ombi.sinkingpoint.com',
-    port: 3579
+    port: 3579,
+    tunnel: false
   },
   {
     name: 'cadvisor.sinkingpoint.com',
