@@ -12,6 +12,8 @@ end
 mount_point = ::File.join(node['gitlab']['mount_point'], 'gitlab')
 
 directory mount_point do
+  user 998
+  group 998
   recursive true
 end
 
