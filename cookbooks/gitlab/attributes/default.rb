@@ -1,0 +1,1 @@
+default['gitlab']['mount_point'] = '/opt/gitlab'

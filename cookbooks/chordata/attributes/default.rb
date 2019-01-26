@@ -2,6 +2,7 @@ override['plex']['plex_mount_point'] = '/l1-za/plex'
 override['plex']['apps_mount_point'] = '/l1-za/storage/apps'
 override['plex']['media_mount_point'] = '/l1-za/storage/media'
 override['grafana']['mount_point'] = '/l1-za/storage'
+override['gitlab']['mount_point'] = '/l1-za/storage'
 
 override['nginx']['servers'] = [
   {
@@ -57,6 +58,11 @@ override['nginx']['servers'] = [
   {
     name: 'cadvisor.sinkingpoint.com',
     port: 9101,
+    tunnel: false
+  },
+  {
+    name: 'gitlab.sinkingpoint.com',
+    port: 5080,
     tunnel: false
   }
 ]

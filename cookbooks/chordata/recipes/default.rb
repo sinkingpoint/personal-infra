@@ -10,4 +10,5 @@ end
 include_recipe 'plex'
 include_recipe 'prometheus'
 include_recipe 'grafana'
+include_recipe 'gitlab'
 include_recipe 'nginx'
