@@ -1,4 +1,5 @@
 default['grafana']['root_password'] = 'changeme'
+default['grafana']['mount_point'] = '/opt/grafana'
 override['nginx']['servers'] = [
   {
     name: 'grafana.sinkingpoint.com',
@@ -6,5 +7,4 @@ override['nginx']['servers'] = [
   }
 ]
 
-default['prometheus']['node_exporter']['dir'] = '/opt/node_exporter/text_files'
 default['backups']['s3_bucket'] = 'sinking-database-backups'

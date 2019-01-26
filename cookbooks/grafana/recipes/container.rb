@@ -9,7 +9,9 @@ docker_image 'grafana' do
   action :pull
 end
 
-directory '/opt/grafana' do
+mount_point = ::File.join(node['grafana']['mount_point'], 'grafana')
+
+directory mount_point do
   user 472
   group 472
 end
@@ -20,7 +22,7 @@ docker_container 'grafana' do
   port '8081:3000'
   restart_policy 'always'
   volumes [
-    '/opt/grafana:/var/lib/grafana',
+    "#{mount_point}:/var/lib/grafana",
   ]
   env [
     "GF_SERVER_ROOT_URL=http://grafana.sinkingpoint.com", 
